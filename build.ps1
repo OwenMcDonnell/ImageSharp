@@ -93,7 +93,7 @@ if("$env:APPVEYOR_API_URL" -ne ""){
 }
 
 Write-Host "Building version '${version}'"
-nuget restore /p:packageversion=$version
+msbuild /t:Restore /p:packageversion=$version
 
 Write-Host "Building projects"
 dotnet build -c Release /p:packageversion=$version
