@@ -1,9 +1,10 @@
 version: 1.0.0.{build}
-image: Visual Studio 2017
+image: previous Visual Studio 2017
 
 # prevent the double build when a branch has an active PR
 skip_branch_with_pr: true
-
+init: 
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 environment:
   matrix:
     - target_framework: netcoreapp2.1
